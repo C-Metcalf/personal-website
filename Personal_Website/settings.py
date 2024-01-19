@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "Portfolio.apps.PortfolioConfig"
+    "Portfolio.apps.PortfolioConfig",
+    "ExpenseTracker.apps.ExpensetrackerConfig"
 ]
 
 MIDDLEWARE = [
