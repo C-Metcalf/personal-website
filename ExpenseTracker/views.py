@@ -10,7 +10,7 @@ from .forms import UserCreationForm, LoginForm
 
 
 def expense_tracker(request):
-    pass
+    return render(request, 'ExpenseTracker/base.html')
 
 
 def signup(request):
