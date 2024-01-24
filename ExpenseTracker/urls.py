@@ -6,9 +6,9 @@ urlpatterns = [
 
     path('', views.expense_tracker, name='portfolio'),
 
-    path('login/', views.login, name='login'),
+    path('login/', views.log_in, name='login'),
 
-    path('logout/', views.logout, name='logout'),
+    path('logout/', views.log_out, name='logout'),
 
     path('sign-up/', views.signup, name='sign-up'),
 ]

@@ -21,11 +21,11 @@ def signup(request):
             return redirect('login')
     else:
         form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'ExpenseTracker/signup.html', {'form': form})
 
 
 # login page
-def login(request):
+def log_in(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -37,10 +37,10 @@ def login(request):
                 return redirect('home')
     else:
         form = LoginForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'ExpenseTracker/login.html', {'form': form})
 
 
 # logout page
-def logout(request):
+def log_out(request):
     logout(request)
     return redirect('login')
