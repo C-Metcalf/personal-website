@@ -15,10 +15,13 @@ def expense_tracker(request):
 
 def signup(request):
     if request.method == 'POST':
+        print(request.POST['password1'])
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
+        print('form was not valid')
+        #print(form)
     else:
         form = UserCreationForm()
     return render(request, 'ExpenseTracker/signup.html', {'form': form})
@@ -29,6 +32,7 @@ def log_in(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
+            print('valid form')
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)

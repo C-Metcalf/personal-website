@@ -1,10 +1,58 @@
+{% extends 'ExpenseTracker/base.html' %} {% block content %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Sign Up</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4B/fXjXaK5tr5z25Th/xhjFHY4lZ9ZIx"
+      crossorigin="anonymous"
+    />
+    <title>User Sign Up</title>
+    <link rel="stylesheet" href="../../static/css/sign-up_style.css" />
   </head>
+
   <body>
-    {% extends 'ExpenseTracker/base.html' %} {% block content %} {% endblock %}
+    <div class="container">
+      <div class="signup-container">
+        <img src="../../static/images/sign-up-cat.webp" alt="Logo" />
+        <form action="{% url 'ExpenseTracker:sign-up' %}" method="post">
+          {% csrf_token %} {% for field in form %}
+          <div class="fieldWrapper">
+            {{ field.label_tag }} {{ field }} {% if field.help_text %}
+            <p class="help" id="{{ field.auto_id }}_helptext">
+              {{ field.help_text|safe }}
+            </p>
+            {% endif %}
+          </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary mr-2">Sign Up</button>
+          <a href="#" class="btn btn-secondary ml-2">Login</a>
+        </form>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"
+      integrity="sha384-T7p8Lk+QlqBLUkYGSLt0v6/E+8p/94jXn1aBEuhhh2xye4PXTswaG+26/Z5ftI6"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4B/fXjXaK5tr5z25Th/xhjFHY4lZ9ZIx"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
+
+{% endblock %}
