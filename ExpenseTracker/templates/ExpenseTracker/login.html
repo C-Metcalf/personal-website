@@ -21,31 +21,15 @@
       <div class="login-container">
         <img src="../../static/images/dog.webp" alt="Logo" />
         <form action="{% url 'ExpenseTracker:login' %}" method="post">
-          {% csrf_token %}
-          <div class="form-group">
-            <label for="username">Email address</label>
-            <input
-              type="email"
-              class="form-control"
-              id="username"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
-              required
-            />
-            <small id="emailHelp" class="form-text text-muted"
-              >We'll never share your email with anyone else.
-            </small>
+          {% csrf_token %} {% for field in form %}
+          <div class="fieldWrapper">
+            {{ field.label_tag }} {{ field }} {% if field.help_text %}
+            <p class="help" id="{{ field.auto_id }}_helptext">
+              {{ field.help_text|safe }}
+            </p>
+            {% endif %}
           </div>
-          <div class="form-group mb-3">
-            <label for="inputPassword">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="inputPassword"
-              placeholder="Password"
-              required
-            />
-          </div>
+          {% endfor %}
           <button type="submit" class="btn btn-primary">Login</button
           ><a
             href="{% url 'ExpenseTracker:sign-up' %}"
