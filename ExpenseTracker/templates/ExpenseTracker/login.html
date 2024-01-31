@@ -7,25 +7,20 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4B/fXjXaK5tr5z25Th/xhjFHY4lZ9ZIx"
-      crossorigin="anonymous"
-    />
     <title>User Login</title>
     <link rel="stylesheet" href="../../static/css/login_style.css" />
   </head>
   <body hx-headers='{"X-CSRFToken": "{{csrf_token}}"}'>
     <div class="container">
-      <div class="login-container">
+      <div class="login-container vertical-center">
         <img src="../../static/images/dog.webp" alt="Logo" />
         <form action="{% url 'ExpenseTracker:login' %}" method="post">
           {% csrf_token %} {% for field in form %}
           <div class="fieldWrapper">
-            {{ field.label_tag }} {{ field }} {% if field.help_text %}
+            <div class="mb-2">{{ field }}</div>
+            {% if field.help_text %}
             <p class="help" id="{{ field.auto_id }}_helptext">
-              {{ field.help_text|safe }}
+              &emsp;{{ field.help_text|safe }}
             </p>
             {% endif %}
           </div>
@@ -39,22 +34,6 @@
         </form>
       </div>
     </div>
-
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"
-      integrity="sha384-T7p8Lk+QlqBLUkYGSLt0v6/E+8p/94jXn1aBEuhhh2xye4PXTswaG+26/Z5ftI6"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4B/fXjXaK5tr5z25Th/xhjFHY4lZ9ZIx"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
 {% endblock %}

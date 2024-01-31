@@ -1,3 +1,4 @@
+{% extends 'ExpenseTracker/base.html' %} {% block content %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,24 +7,19 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
     <title>User Sign Up</title>
     <link rel="stylesheet" href="../../static/css/sign-up_style.css" />
   </head>
-
   <body>
     <div class="container">
-      <div class="signup-container">
+      <div class="signup-container vertical-center">
         <img src="../../static/images/sign-up-cat.webp" alt="Logo" />
         <form action="{% url 'ExpenseTracker:sign-up' %}" method="post">
           {% csrf_token %} {% for field in form %}
           <div class="fieldWrapper">
-            {{ field.label_tag }} {{ field }} {% if field.help_text %}
+            {{ field.label_tag }}
+            <div class="mb-2">{{ field }}</div>
+            {% if field.help_text %}
             <p class="help" id="{{ field.auto_id }}_helptext">
               {{ field.help_text|safe }}
             </p>
@@ -31,25 +27,14 @@
           </div>
           {% endfor %}
           <button type="submit" class="btn btn-primary mr-2">Sign Up</button>
-          <a href="#" class="btn btn-secondary ml-2">Login</a>
+          <a
+            href="{% url 'ExpenseTracker:login' %}"
+            class="btn btn-primary mx-3"
+            >Login</a
+          >
         </form>
       </div>
     </div>
-
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"
-      integrity="sha384-T7p8Lk+QlqBLUkYGSLt0v6/E+8p/94jXn1aBEuhhh2xye4PXTswaG+26/Z5ftI6"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4B/fXjXaK5tr5z25Th/xhjFHY4lZ9ZIx"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
+{% endblock %}

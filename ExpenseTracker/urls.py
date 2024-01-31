@@ -4,7 +4,7 @@ from . import views
 app_name = 'ExpenseTracker'
 urlpatterns = [
 
-    path('', views.expense_tracker, name='portfolio'),
+    path('', views.expense_tracker, name='expense-tracker'),
 
     path('login/', views.log_in, name='login'),
 

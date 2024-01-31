@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
-from .forms import UserCreationForm, LoginForm, SignupForm
+from .forms import LoginForm, SignupForm
 
 # Create your views here.
 # ToDo: Work on creating a login, sign-up, and logout functionality for this app.
@@ -10,18 +10,17 @@ from .forms import UserCreationForm, LoginForm, SignupForm
 
 
 def expense_tracker(request):
-    return render(request, 'ExpenseTracker/base.html')
+    return render(request, 'ExpenseTracker/index.html')
 
 
 def signup(request):
     if request.method == 'POST':
-        print(request.POST['password1'])
+        print(request.POST)
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('ExpenseTracker:login')
         print('form was not valid')
-        #print(form)
     else:
         form = SignupForm()
     return render(request, 'ExpenseTracker/signup.html', {'form': form})
@@ -31,6 +30,7 @@ def signup(request):
 def log_in(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
+        print(form.errors)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -38,7 +38,7 @@ def log_in(request):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
-                return redirect('ExpenseTracker:expense_tracker')
+                return redirect('ExpenseTracker:expense-tracker')
     else:
         form = LoginForm()
     return render(request, 'ExpenseTracker/login.html', {'form': form})
@@ -47,4 +47,4 @@ def log_in(request):
 # logout page
 def log_out(request):
     logout(request)
-    return redirect('login')
+    return redirect('ExpenseTracker:login')
