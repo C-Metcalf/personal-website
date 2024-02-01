@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "Portfolio.apps.PortfolioConfig",
-    "ExpenseTracker.apps.ExpensetrackerConfig"
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'Portfolio.apps.PortfolioConfig',
+    'ExpenseTracker.apps.ExpensetrackerConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -76,6 +79,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Personal_Website.wsgi.application'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 # Database
