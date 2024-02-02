@@ -17,6 +17,7 @@ def signup(request):
     if request.method == 'POST':
         print(request.POST)
         form = SignupForm(request.POST)
+        print(form.errors)
         if form.is_valid():
             form.save()
             return redirect('ExpenseTracker:login')

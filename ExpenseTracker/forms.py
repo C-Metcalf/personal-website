@@ -7,9 +7,19 @@ from django.forms import TextInput, PasswordInput, ModelForm
 class SignupForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
         widgets = {
             'username': TextInput(attrs={
+                'class': 'form-control',
+                'style': 'width: 250px;',
+                'placeholder': 'JohnDoe'
+            }),
+            'first_name': TextInput(attrs={
+                'class': 'form-control',
+                'style': 'width: 250px;',
+                'placeholder': 'JohnDoe'
+            }),
+            'last_name': TextInput(attrs={
                 'class': 'form-control',
                 'style': 'width: 250px;',
                 'placeholder': 'JohnDoe'

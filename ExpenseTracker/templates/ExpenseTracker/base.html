@@ -39,20 +39,10 @@
                 >Home</a
               >
             </li>
+          </ul>
+          <ul class="navbar navbar-nav ms-auto mb-2mb-lg-0">
             {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'ExpenseTracker:logout' %}"
-                >Logout</a
-              >
-            </li>
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'ExpenseTracker:login' %}"
-                >Login</a
-              >
-            </li>
-            {% endif %}
-            <li class="nav-item dropdown topnav-right">
+            <li class="nav-item dropdown topnav-right mx-3">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -60,16 +50,37 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown link
+                {{ user.username }}
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+              <ul class="dropdown-menu dropdown-menu-end">
                 <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'ExpenseTracker:logout' %}"
+                    >Account</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item dropdown-center"
+                    href="{% url 'ExpenseTracker:logout' %}"
+                    >Logout</a
+                  >
                 </li>
               </ul>
             </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ExpenseTracker:login' %}"
+                >Login</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ExpenseTracker:sign-up' %}"
+                >Sign Up</a
+              >
+            </li>
+            {% endif %}
           </ul>
         </div>
       </div>
