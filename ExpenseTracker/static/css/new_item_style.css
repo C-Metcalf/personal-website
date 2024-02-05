@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f8f8f8; /* Light grey background */
+  }
+
+  .tabbed-box {
+    width: 550px; /* 300px (original width) + 250px */
+    height: 300px; /* 150px (original height) + 150px */
+    border-radius: 10px;
+    background-color: dodgerblue; /* Dark green background */
+    overflow: hidden;
+  }
+
+  .tabs {
+    display: flex;
+    background-color: royalblue; /* Light green tabs */
+  }
+
+  .tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s;
+  }
+
+  .tab:hover {
+    background-color: darkblue; /* Slightly darker green on hover */
+  }
+
+  .tab-content {
+    padding: 20px;
+    color: #ffffff; /* White text color */
+  }

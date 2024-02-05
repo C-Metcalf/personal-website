@@ -50,3 +50,14 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control',
                                                              'style': 'width: 250px;',
                                                              'placeholder': 'Password'}))
+
+
+class IncomeTicketForm(forms.Form):
+    source = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
+                                                             'style': 'width: 250px;',
+                                                             'placeholder': 'Where did you get the money from'}))
+    amount = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control',
+                                                             'style': 'width: 250px;',
+                                                             'placeholder': 'How much money did you get'}))
+
+
