@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../static/css/base_style.css" />
   </head>
   <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-custom navbar-dark ">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'Portfolio:portfolio' %}"
           >Portfolio</a
@@ -48,9 +48,9 @@
               >
             </li>
           </ul>
-          <ul class="navbar navbar-nav ms-auto mb-2mb-lg-0">
+          <ul class="navbar navbar-nav ms-auto mb-2mb-lg-0 navbar-dark">
             {% if user.is_authenticated %}
-            <li class="nav-item dropdown topnav-right mx-3">
+            <li class="nav-item dropdown topnav-right mx-3 ">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"

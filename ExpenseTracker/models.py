@@ -9,6 +9,9 @@ class ExpenseTicket(models.Model):
     amount = models.DecimalField(max_digits=8, decimal_places=2)
     date = models.DateTimeField(default=datetime.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # I want this to be a dropdown where the user selects the category instead of typing one in
+    # This would then be a table with in the db where the users could add categories but not remove them.
+    # category = models.CharField(max_length=50)
 
 
 class IncomeTicket(models.Model):

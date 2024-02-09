@@ -54,10 +54,19 @@ class LoginForm(forms.Form):
 
 class IncomeTicketForm(forms.Form):
     source = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
-                                                             'style': 'width: 250px;',
+                                                             'style': 'width: 275px; margin: auto',
                                                              'placeholder': 'Where did you get the money from'}))
     amount = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control',
-                                                             'style': 'width: 250px;',
+                                                             'style': 'width: 275px; margin: auto',
                                                              'placeholder': 'How much money did you get'}))
+
+class ExpenseTicketForm(forms.Form):
+    item = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
+                                                         'style': 'width: 275px; margin: auto',
+                                                         'placeholder': 'What did you spend money on?'}))
+
+    amount = forms.DecimalField(widget=forms.NumberInput(attrs={'class': 'form-control',
+                                                                'style': 'width: 275px; margin: auto',
+                                                                'placeholder': 'How much money did you spend?'}))
 
 

@@ -2,8 +2,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm, SignupForm, IncomeTicketForm
-from .models import IncomeTicket
+from .forms import LoginForm, SignupForm, IncomeTicketForm, ExpenseTicketForm
+from .models import IncomeTicket, ExpenseTicket
 from datetime import datetime
 
 # Create your views here.
@@ -54,17 +54,30 @@ def log_out(request):
 
 def new_item(request):
     if request.method == 'POST':
+        # See if the form is am Income Ticket
         form = IncomeTicketForm(request.POST)
         if form.is_valid():
             source = form.cleaned_data['source']
             amount = form.cleaned_data['amount']
             user_id = request.user.id
             date = datetime.date(datetime.now())
-            income_ticket = IncomeTicket(amount=amount, source=source, date=date ,user_id=user_id)
+            income_ticket = IncomeTicket(amount=amount, source=source, date=date, user_id=user_id)
+            # If the ticket saves I want an alert to tell the user that it saved correctly
             income_ticket.save()
-    else:
-        form = IncomeTicketForm()
+        else:
+            form = ExpenseTicketForm(request.POST)
+            if form.is_valid():
+                item = form.cleaned_data['item']
+                amount = form.cleaned_data['amount']
+                user_id = request.user.id
+                date = datetime.date(datetime.now())
+                expense_ticket = ExpenseTicket(amount=amount, item=item, date=date, user_id=user_id)
+                # If the ticket saves I want an alert to tell the user that it saved correctly
+                expense_ticket.save()
 
-    return render(request, 'ExpenseTracker/new_item.html', {'form': form})
+    income_form = IncomeTicketForm()
+    expense_form = ExpenseTicketForm()
+
+    return render(request, 'ExpenseTracker/new_item.html', {'income_form': income_form, 'expense_form': expense_form})
 
 
