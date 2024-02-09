@@ -14,16 +14,16 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='expenseticket',
             name='day',
-            field=models.IntegerField(default=datetime.datetime.now),
+            field=models.IntegerField(default=0),
         ),
         migrations.AlterField(
             model_name='expenseticket',
             name='month',
-            field=models.IntegerField(default=datetime.datetime.now),
+            field=models.IntegerField(default=0),
         ),
         migrations.AlterField(
             model_name='expenseticket',
             name='year',
-            field=models.IntegerField(default=datetime.datetime.now),
+            field=models.IntegerField(default=0),
         ),
     ]
