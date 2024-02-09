@@ -10,7 +10,12 @@ from datetime import datetime
 
 
 def expense_tracker(request):
-    return render(request, 'ExpenseTracker/index.html')
+    # Get all expense tickets and income tickets
+    expense_tickets = ExpenseTicket.objects.all()
+    income_tickets = IncomeTicket.objects.all()
+    print(income_tickets[0].month)
+    context = {'expense_tickets': expense_tickets, 'income_tickets': income_tickets}
+    return render(request, 'ExpenseTracker/index.html', context)
 
 
 def signup(request):
@@ -55,16 +60,19 @@ def log_out(request):
 def new_item(request):
     if request.method == 'POST':
         # See if the form is am Income Ticket
-        form = IncomeTicketForm(request.POST)
-        if form.is_valid():
-            source = form.cleaned_data['source']
-            amount = form.cleaned_data['amount']
-            user_id = request.user.id
-            date = datetime.date(datetime.now())
-            income_ticket = IncomeTicket(amount=amount, source=source, date=date, user_id=user_id)
-            # If the ticket saves I want an alert to tell the user that it saved correctly
-            income_ticket.save()
-        else:
+        if 'income_ticket' in request.POST:
+            print('income_ticket')
+            form = IncomeTicketForm(request.POST)
+            if form.is_valid():
+                source = form.cleaned_data['source']
+                amount = form.cleaned_data['amount']
+                user_id = request.user.id
+                date = datetime.date(datetime.now())
+                income_ticket = IncomeTicket(amount=amount, source=source, date=date, user_id=user_id)
+                # If the ticket saves I want an alert to tell the user that it saved correctly
+                income_ticket.save()
+        if 'expense_ticket' in request.POST:
+            print('expense_ticket')
             form = ExpenseTicketForm(request.POST)
             if form.is_valid():
                 item = form.cleaned_data['item']

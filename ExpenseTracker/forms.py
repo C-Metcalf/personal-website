@@ -53,6 +53,7 @@ class LoginForm(forms.Form):
 
 
 class IncomeTicketForm(forms.Form):
+    income_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
     source = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
                                                              'style': 'width: 275px; margin: auto',
                                                              'placeholder': 'Where did you get the money from'}))
@@ -60,7 +61,9 @@ class IncomeTicketForm(forms.Form):
                                                              'style': 'width: 275px; margin: auto',
                                                              'placeholder': 'How much money did you get'}))
 
+
 class ExpenseTicketForm(forms.Form):
+    expense_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
     item = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
                                                          'style': 'width: 275px; margin: auto',
                                                          'placeholder': 'What did you spend money on?'}))

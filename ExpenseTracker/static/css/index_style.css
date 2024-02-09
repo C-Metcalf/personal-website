@@ -61,3 +61,10 @@ body {
     padding: 8px;
     text-align: left;
 }
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}

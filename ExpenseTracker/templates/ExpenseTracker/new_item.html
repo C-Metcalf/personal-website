@@ -38,6 +38,7 @@
             <div class="tab-content" id="expense-tab" style="display: none">
                 <!-- Content for Expense tab -->
                 <h2>Expense Ticket</h2>
+            <form action="{% url 'ExpenseTracker:new-item' %}" method="post">
                 {% csrf_token %} {% for field in expense_form %}
                 <div class="fieldWrapper">
                     <div class="mb-2 ">{{ field }}</div>
@@ -49,6 +50,7 @@
                 </div>
             {% endfor %}
                 <button type="submit" class="btn submit-btn ">Create Item</button>
+            </form>
             </div>
         </div>
 
