@@ -6,6 +6,7 @@ from .forms import LoginForm, SignupForm, IncomeTicketForm, ExpenseTicketForm
 from .models import IncomeTicket, ExpenseTicket
 from datetime import datetime
 
+
 # Create your views here.
 
 
@@ -13,7 +14,6 @@ def expense_tracker(request):
     # Get all expense tickets and income tickets
     expense_tickets = ExpenseTicket.objects.all()
     income_tickets = IncomeTicket.objects.all()
-    print(income_tickets[0].month)
     context = {'expense_tickets': expense_tickets, 'income_tickets': income_tickets}
     return render(request, 'ExpenseTracker/index.html', context)
 
@@ -67,8 +67,11 @@ def new_item(request):
                 source = form.cleaned_data['source']
                 amount = form.cleaned_data['amount']
                 user_id = request.user.id
-                date = datetime.date(datetime.now())
-                income_ticket = IncomeTicket(amount=amount, source=source, date=date, user_id=user_id)
+                day = datetime.today().day
+                month = datetime.today().month
+                year = datetime.today().year
+                income_ticket = IncomeTicket(amount=amount, source=source, day=day, month=month, year=year,
+                                             user_id=user_id)
                 # If the ticket saves I want an alert to tell the user that it saved correctly
                 income_ticket.save()
         if 'expense_ticket' in request.POST:
@@ -78,8 +81,11 @@ def new_item(request):
                 item = form.cleaned_data['item']
                 amount = form.cleaned_data['amount']
                 user_id = request.user.id
-                date = datetime.date(datetime.now())
-                expense_ticket = ExpenseTicket(amount=amount, item=item, date=date, user_id=user_id)
+                day = datetime.today().day
+                month = datetime.today().month
+                year = datetime.today().year
+                expense_ticket = ExpenseTicket(amount=amount, source=item, day=day, month=month, year=year,
+                                               user_id=user_id)
                 # If the ticket saves I want an alert to tell the user that it saved correctly
                 expense_ticket.save()
 
@@ -87,5 +93,3 @@ def new_item(request):
     expense_form = ExpenseTicketForm()
 
     return render(request, 'ExpenseTracker/new_item.html', {'income_form': income_form, 'expense_form': expense_form})
-
-
