@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('ExpenseTracker', '0002_remove_expenseticket_date_remove_incometicket_date_and_more.py'),
+        ('ExpenseTracker', '0002_remove_expenseticket_date_remove_incometicket_date_and_more'),
     ]
 
     operations = [
