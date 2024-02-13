@@ -11778,3 +11778,17 @@ html {
     left: -2vw;
   }
 }
+
+.skill-card {
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+.skill-card:hover {
+  background: linear-gradient(135deg, #6610f2, #0dcaf0, #146c43, #6d0e3e);
+  color: white;
+  border: 2px solid black;
+}
