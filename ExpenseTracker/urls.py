@@ -14,4 +14,7 @@ urlpatterns = [
 
     path('new-item/', views.new_item, name='new-item'),
 
+    path('index/', views.index, name='index'),
+
+
 ]

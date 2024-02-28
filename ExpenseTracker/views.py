@@ -18,6 +18,10 @@ def expense_tracker(request):
     return render(request, 'ExpenseTracker/index.html', context)
 
 
+def  index(request):
+    return render(request, 'ExpenseTracker/index_2.html')
+
+
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
