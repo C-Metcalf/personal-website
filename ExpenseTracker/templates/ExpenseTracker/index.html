@@ -11,10 +11,10 @@
       rel="stylesheet"
       href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css"
     />
-
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-    <link rel="stylesheet" href="../../static/css/index_style.css" />
+    <!-- CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../../static/css/index_style.css" />
     <!-- Include Chart.js library -->
     <title>Landing Page</title>
   </head>
@@ -47,6 +47,11 @@
         </div>
       </div>
       <canvas id="myChart"></canvas>
+      <div
+        id="myGrid"
+        class="ag-theme-quartz"
+        style="height: 350px; width: 820px"
+      ></div>
       {% if expense_tickets %}
       <div>
         <table id="expense-table" class="data-table">
@@ -86,31 +91,9 @@
         <!-- Table data will be dynamically populated using JavaScript -->
       </table>
     </div>
-
     <script src="../../static/js/index.js"></script>
-    <script src=../../../node_modules/chart.js/dist/chart.umd.js></script>
-    <script>
-  const ctx = document.getElementById('myChart');
-
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
+    <script src="../../static/js/myChart.js"></script>
+    <script src="../../static/js/myTable.js"></script>
   </body>
 </html>
 
