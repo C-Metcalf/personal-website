@@ -154,11 +154,11 @@ STORAGES = {
     },
 }
 
+email_key = os.environ.get('EMAIL_KEY')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "cmetcalf2022@gmail.com"
-EMAIL_HOST_PASSWORD = "wrpv jzfs rffy qaio"
-
+EMAIL_HOST_PASSWORD = email_key
