@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/me/is/the/admin', admin.site.urls),
 
     path('', include('Portfolio.urls')),
 
     path('expense-tracker/', include('ExpenseTracker.urls')),
 ]
+
+handler404 = 'Portfolio.views.page_not_found'

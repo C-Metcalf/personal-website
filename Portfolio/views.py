@@ -48,3 +48,7 @@ def contact(request):
     return render(request, 'Portfolio/contact.html', {"contact_info": contact_info})
 
 
+def page_not_found(request, exception):
+    return render(request, 'Portfolio/page_not_found.html')
+
+

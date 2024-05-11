@@ -34,6 +34,8 @@ CSRF_TRUSTED_ORIGINS = ['https://*.railway.app', 'https://c-metcalf.dev', 'https
 
 # Application definition
 
+# ToDo: fix all warnings from the "check --deploy"
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
