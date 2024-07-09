@@ -34,10 +34,10 @@ def contact(request):
         message = name + "\n" + email + "\n" + phone + "\n" + message
 
         send_mail(
-            "New Contact Form",
-            message,
-            email,
-            ["jarheadfro@gmail.com"],
+            subject="New Contact Form",
+            message=message,
+            from_email=email,
+            recipient_list=["jarheadfro@gmail.com"],
             fail_silently=False,
         )
 
