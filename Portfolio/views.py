@@ -36,7 +36,7 @@ def contact(request):
         send_mail(
             "New Contact Form",
             message,
-            settings.EMAIL_HOST_USER,
+            email,
             ["jarheadfro@gmail.com"],
             fail_silently=False,
         )

@@ -18,7 +18,7 @@ def expense_tracker(request):
     return render(request, 'ExpenseTracker/index.html', context)
 
 
-def  index(request):
+def index(request):
     return render(request, 'ExpenseTracker/index_2.html')
 
 
