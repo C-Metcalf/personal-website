@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 from .forms import ContactForm
 
@@ -33,6 +33,13 @@ def contact(request):
 
         message = name + "\n" + email + "\n" + phone + "\n" + message
 
+        email_message = EmailMessage(
+            subject="New Contact Form",
+            body=message,
+            from_email=email,
+            to=["jarheadfro@gmail.com"]
+        )
+        """
         send_mail(
             subject="New Contact Form",
             message=message,
@@ -40,7 +47,8 @@ def contact(request):
             recipient_list=["jarheadfro@gmail.com"],
             fail_silently=False,
         )
-
+        """
+        email_message.send(fail_silently=False)
     contact_form = ContactForm()
     contact_labels = ["Name", "Email", "Phone", "Message"]
     contact_info = zip(contact_labels, contact_form)
