@@ -32,7 +32,7 @@ def contact(request):
             email = request.POST['email']
             phone = request.POST['phone']
             message = request.POST['message']
-    
+
             message = name + "\n" + email + "\n" + phone + "\n" + message
 
             email_message = EmailMessage(
@@ -41,16 +41,8 @@ def contact(request):
                 from_email=email,
                 to=["jarheadfro@gmail.com"]
             )
-        """
-        send_mail(
-            subject="New Contact Form",
-            message=message,
-            from_email=email,
-            recipient_list=["jarheadfro@gmail.com"],
-            fail_silently=False,
-        )
-        """
-        email_message.send(fail_silently=False)
+            email_message.send(fail_silently=False)
+
     contact_form = ContactForm()
     contact_labels = ["Name", "Email", "Phone", "Message", "reCaptcha"]
     contact_info = zip(contact_labels, contact_form)
