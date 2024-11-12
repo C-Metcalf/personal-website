@@ -25,20 +25,22 @@ def resume(request):
 
 def contact(request):
     if request.method == 'POST':
-        print(request.POST)
-        name = request.POST['name']
-        email = request.POST['email']
-        phone = request.POST['phone']
-        message = request.POST['message']
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            print(request.POST)
+            name = request.POST['name']
+            email = request.POST['email']
+            phone = request.POST['phone']
+            message = request.POST['message']
+    
+            message = name + "\n" + email + "\n" + phone + "\n" + message
 
-        message = name + "\n" + email + "\n" + phone + "\n" + message
-
-        email_message = EmailMessage(
-            subject="New Contact Form",
-            body=message,
-            from_email=email,
-            to=["jarheadfro@gmail.com"]
-        )
+            email_message = EmailMessage(
+                subject="New Contact Form",
+                body=message,
+                from_email=email,
+                to=["jarheadfro@gmail.com"]
+            )
         """
         send_mail(
             subject="New Contact Form",
@@ -54,7 +56,7 @@ def contact(request):
     contact_info = zip(contact_labels, contact_form)
 
 
-    
+
     # return render(request, 'Portfolio/contact.html', {"contact_info": contact_info})
     return render(request, 'Portfolio/contact.html', {"form": contact_form})
 
