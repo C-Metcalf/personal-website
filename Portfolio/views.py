@@ -50,10 +50,13 @@ def contact(request):
         """
         email_message.send(fail_silently=False)
     contact_form = ContactForm()
-    contact_labels = ["Name", "Email", "Phone", "Message"]
+    contact_labels = ["Name", "Email", "Phone", "Message", "reCaptcha"]
     contact_info = zip(contact_labels, contact_form)
 
-    return render(request, 'Portfolio/contact.html', {"contact_info": contact_info})
+
+    
+    # return render(request, 'Portfolio/contact.html', {"contact_info": contact_info})
+    return render(request, 'Portfolio/contact.html', {"form": contact_form})
 
 
 def page_not_found(request, exception):

@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_bootstrap5',
+    'django_recaptcha',
     'Portfolio.apps.PortfolioConfig',
     'ExpenseTracker.apps.ExpensetrackerConfig',
 
@@ -116,7 +119,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY', os.getenv('RECAPTCHA_PUBLIC_KEY'))
+RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY', os.getenv('RECAPTCHA_PRIVATE_KEY'))
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
